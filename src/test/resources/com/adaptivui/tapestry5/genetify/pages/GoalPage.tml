@@ -1,0 +1,11 @@
+<html t:type="layout" title="Goal Page"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+        
+      <p>
+         This is an implicit page view goal. <br />
+         No need to do a particular action, just access the current page and a <i>Goal</i> will be recorded for the page with a <i>score</i> of <i>2</i> according to the page annotation <i>@Goal</i>.
+      </p>
+      
+</html>

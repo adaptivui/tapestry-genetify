@@ -1,0 +1,22 @@
+<html t:type="layout" title="Record Goal Page"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+
+        <p>
+         	A click on the <i>Increment</i> link below will make <i>Genetify</i> to record a <i>Goal</i> with a <i>score</i> equals to 3 according to the <i>genetify/RecordGoal</i> mixins declared for the ActionLink.
+        </p>
+        <!-- A Zone is a component that can be updated in place, triggered by other components. -->
+	    <t:zone t:id="zone">
+	        <p>
+	            You have clicked the link <strong>${clickCount}</strong> times.
+	        </p>
+	
+	        <p>
+	            [
+	            <t:actionlink t:id="incrementAjax" zone="^" t:mixins="genetify/RecordGoal" t:label="incrementAjax" t:score="3">increment (via Ajax)</t:actionlink>
+	            ]
+	        </p>
+	
+	    </t:zone>
+</html>

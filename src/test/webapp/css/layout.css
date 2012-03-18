@@ -1,0 +1,60 @@
+#body {
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+    font: 15px Arial, Helvetica, sans-serif;
+    color: #626262;
+}
+
+// Used by Genetify to vary style
+#body_vA {
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+    font: 15px Arial, Helvetica, sans-serif;
+    color: red;
+}
+
+// Used by Genetify to vary style
+#body_vB {
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+    font: 15px Arial, Helvetica, sans-serif;
+    color: blue;
+}
+
+p {
+    margin-bottom: 2em;
+    line-height: 200%;
+}
+
+a {
+    color: #1692B8;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+div.logo h1, div.logo p {
+    float: left;
+    text-transform: lowercase;
+}
+
+div.logo h1 {
+    padding: 0px 0 0 40px;
+}
+
+div.logo p {
+    margin: 0;
+    padding: 14px 0 0 4px;
+    line-height: normal;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+div.logo a {
+    text-decoration: none;
+    color: #D0C7A6;
+}

@@ -1,0 +1,7 @@
+<html t:type="layout" title="Default Genetify Page"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+
+        <p>A simple page annotated with the @Genetify annotation will add an appropriate stack (js and css) and call the <i>genetify.vary()</i> function on page load</p>
+</html>

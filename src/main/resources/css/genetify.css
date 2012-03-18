@@ -1,0 +1,4 @@
+/* a default css to insert into all pages you want to genetify */
+.v { display: none; }
+.genetify_disabled { display: none !important; } 
+.genetify_enabled { display: block !important; }

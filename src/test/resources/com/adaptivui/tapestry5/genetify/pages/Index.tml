@@ -1,0 +1,8 @@
+<html t:type="layout" title="Index Page"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+     	
+     <p>A simple page with annotated render methods to call the <i>genetify.vary()</i> function with a paremeter depending on the <i>@Genetify</i> annotation parameter</p>
+        
+</html>

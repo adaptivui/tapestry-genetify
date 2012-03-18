@@ -11,58 +11,50 @@ Example
 
 Assuming you provide [genetified resources](https://github.com/gregdingle/genetify/wiki/Usage) for your website.
 
-`
-#navbar { color: red; }
-#navbar_vA { color: green; }
-`
+    #navbar { color: red; }
+    #navbar_vA { color: green; }
 
 For instance, a simple genetified css that set a color to a element identified by "navbar" (note the suffix "_vX")
 
 @Genetify 
 ---------
 
-`
-package com.example.testapp.pages;
-...
-@Genetify
-public class Index {
-	
-}
-`
+    package com.example.testapp.pages;
+    ...
+    @Genetify
+    public class Index {
+    	
+    }
 
 Includes the genetify stack (js and css) and evolves the webpage design for all genetified resources (css, js and markup).
 
-`
-package com.example.testapp.pages;
-...
-@Genetify(vary=GeneType.CSSRULES)
-public class Index {
-	
-	@SetupRender
-	@Genetify(vary=GeneType.JAVASCRIPT)
-	void init(){		
-	}
-	
-	@AfterRender
-	@Genetify(vary=GeneType.ELEMENTS)
-	void doEnd(){
-	}
-}
-`
+    package com.example.testapp.pages;
+    ...
+    @Genetify(vary=GeneType.CSSRULES)
+    public class Index {
+    
+        @SetupRender
+        @Genetify(vary=GeneType.JAVASCRIPT)
+        void init(){		
+        }
+    
+        @AfterRender
+        @Genetify(vary=GeneType.ELEMENTS)
+        void doEnd(){
+        }
+    }
 
 This includes the genetify stack and evolves a specified resource type (css, js or markup) during the specified render phase.
 
 @Goal
 -----
 
-`
-package com.example.testapp.pages;
-...
-@Goal(label="SubscribeView", score=1)
-public class Subscribe {
-...
-}
-`
+    package com.example.testapp.pages;
+    ...
+    @Goal(label="SubscribeView", score=1)
+    public class Subscribe {
+    ...
+    }
 
 Records a goal on a page view with label "SubscribeView" and score "1"
 
@@ -71,17 +63,12 @@ RecordGoal Mixins
 
 in SomePage.tml
 
-`
-<html t:type="layout" title="Some Page"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      xmlns:p="tapestry:parameter">
-	...
-	<p>
-		<t:actionlink t:id="addToBasket" t:mixins="genetify/RecordGoal" t:label="addedToBasket" t:score="3">Add to basket</t:actionlink>
-	</p>
-	...
-</html>
-`
+    <html t:type="layout" title="Some Page"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+        ...
+        <t:actionlink t:id="addToBasket" t:mixins="genetify/RecordGoal" t:label="addedToBasket" t:score="3">Add to basket</t:actionlink>
+        ...
+    </html>
 
 Uses a mixins to record the goal with label "addedToBasket" and score "3" on the link click.
 

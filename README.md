@@ -1,7 +1,7 @@
 Tapestry Genetify
 =================
 
-Tapestry-genetify is intented to be a lightweight and unobtrusive integration of the [genetify](https://github.com/gregdingle/genetify/wiki/) module.
+Tapestry-genetify is intented to be a lightweight and unobtrusive integration of the [genetify](https://github.com/gregdingle/genetify/wiki/) tool for Tapestry 5.
 
 [Genetify](https://github.com/gregdingle/genetify/wiki/) is a powerful opensource website testing and optimization tool created by Greg Dingle.
 It makes your website adapt and evolve in an autonomous way and can be compared to [Google Website Optimizer](http://www.google.com/websiteoptimizer/).

@@ -14,9 +14,9 @@ Assuming you provide [genetified resources](https://github.com/gregdingle/geneti
     #navbar { color: red; }
     #navbar_vA { color: green; }
 
-For instance, a simple genetified css that set a color to a element identified by "navbar" (note the suffix "_vX")
+For instance, a simple genetified css that set a color to an element identified by "navbar" (note the suffix "_vX")
 
-##@Genetify annotation
+#### @Genetify annotation ####
 
     package com.example.testapp.pages;
     ...
@@ -45,7 +45,7 @@ Includes the genetify stack (js and css) and evolves the webpage design for all 
 
 This includes the genetify stack and evolves a specified resource type (css, js or markup) during the specified render phase.
 
-##@Goal annotation
+#### @Goal annotation ####
 
     package com.example.testapp.pages;
     ...
@@ -56,7 +56,7 @@ This includes the genetify stack and evolves a specified resource type (css, js 
 
 Records a goal on a page view with label "SubscribeView" and score "1"
 
-##RecordGoal Mixins
+#### RecordGoal Mixins ####
 
 in SomePage.tml
 

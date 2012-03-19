@@ -63,10 +63,15 @@ RecordGoal Mixins
 
 in SomePage.tml
 
-    <html t:type="layout" title="Some Page"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+    <html t:type="layout" title="Some Page"  
+          xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
         ...
-        <t:actionlink t:id="addToBasket" t:mixins="genetify/RecordGoal" t:label="addedToBasket" t:score="3">Add to basket</t:actionlink>
+        <t:actionlink t:id="addToBasket" 
+                t:mixins="genetify/RecordGoal" 
+                t:label="addedToBasket" 
+                t:score="3">
+            Add to basket
+        </t:actionlink>
         ...
     </html>
 

@@ -3,20 +3,30 @@ Tapestry Genetify
 
 Tapestry-genetify is intented to be a lightweight and unobtrusive integration of the [genetify](https://github.com/gregdingle/genetify/wiki/) tool for Tapestry 5.
 
-[Genetify](https://github.com/gregdingle/genetify/wiki/) is a powerful opensource website testing and optimization tool created by Greg Dingle.
-It makes your website adapt and evolve in an autonomous way and can be compared to [Google Website Optimizer](http://www.google.com/websiteoptimizer/).
+[Genetify](https://github.com/gregdingle/genetify/wiki/) is a powerful opensource website testing and optimization tool created by [Greg Dingle](https://github.com/gregdingle).
+It makes your website adapt and evolve toward an optimum in an autonomous way using a genetic algorithm and can be compared to [Google Website Optimizer](http://www.google.com/websiteoptimizer/).
 
 Example
 =======
 
 Assuming you provide [genetified resources](https://github.com/gregdingle/genetify/wiki/Usage) for your website.
 
-    #navbar { color: red; }
-    #navbar_vA { color: green; }
-
 For instance, a simple genetified css that set a color to an element identified by "navbar" (note the suffix "_vX")
 
-#### @Genetify annotation ####
+    #navbar { color: red; }
+    #navbar_vA { color: green; }
+    #navbar_vB { color: blue; }
+    
+and/or a simple genetified markup
+    
+    <div class="sentence">One way of saying something</div>           
+    <div class="sentence v anotherway">Another way of saying something</div>
+
+#### Genetify ####
+
+The module provides a way to add the genetify stack (js and css) and to evolves the webpage design.
+
+###### Genetify annotation  ######
 
     package com.example.testapp.pages;
     ...
@@ -25,8 +35,10 @@ For instance, a simple genetified css that set a color to an element identified 
     	
     }
 
-Includes the genetify stack (js and css) and evolves the webpage design for all genetified resources (css, js and markup).
+The _@Genetify_ annotation includes the genetify stack and evolves the webpage design for all genetified resources (css, js and markup).
 
+###### Vary attribute  ######
+    
     package com.example.testapp.pages;
     ...
     @Genetify(vary=GeneType.CSSRULES)
@@ -43,9 +55,13 @@ Includes the genetify stack (js and css) and evolves the webpage design for all 
         }
     }
 
-This includes the genetify stack and evolves a specified resource type (css, js or markup) during the specified render phase.
+The _vary_ attribute evolves a given resource type (css, js or markup) during a given render phase.
 
-#### @Goal annotation ####
+#### Goal record ####
+
+The module provides also a way to record a goal on a page view or on an event 
+
+###### Goal annotation  ######
 
     package com.example.testapp.pages;
     ...
@@ -54,9 +70,11 @@ This includes the genetify stack and evolves a specified resource type (css, js 
     ...
     }
 
-Records a goal on a page view with label "SubscribeView" and score "1"
+In this sample, the _@Goal_ annotation records a goal on a page view with label "SubscribeView" and a score of 1
 
-#### RecordGoal Mixins ####
+###### RecordGoal Mixins ######
+
+To record a goal on an event with a label and a score, use the _genetify/recordGoal_ mixins :
 
 in SomePage.tml
 
@@ -72,7 +90,7 @@ in SomePage.tml
         ...
     </html>
 
-Uses a mixins to record the goal with label "addedToBasket" and score "3" on the link click.
+Here, the "addedToBasket" goal will be recorded with a score of 3 on the click event.
 
 Licence
 =======

@@ -11,20 +11,20 @@ Example
 
 Assuming you provide [genetified resources](https://github.com/gregdingle/genetify/wiki/Usage) for your website.
 
-For instance, a simple genetified css that set a color to an element identified by "navbar" (note the suffix "_vX")
+For instance, a simple genetified css that set a color to an element identified by "navbar" (note the suffix '_vX')
 
     #navbar { color: red; }
     #navbar_vA { color: green; }
     #navbar_vB { color: blue; }
     
-and/or a simple genetified markup
+and/or a simple genetified markup (note the _class_ attribute's value with the 'v' separator)
     
     <div class="sentence">One way of saying something</div>           
     <div class="sentence v anotherway">Another way of saying something</div>
 
 #### Genetify ####
 
-The module provides a way to add the genetify stack (js and css) and to evolves the webpage design.
+The module provides a way to add the genetify stack (js and css) and to evolve the webpage design.
 
 ###### Genetify annotation  ######
 

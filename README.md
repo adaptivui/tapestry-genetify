@@ -16,8 +16,8 @@ Assuming you provide [genetified resources](https://github.com/gregdingle/geneti
 
 For instance, a simple genetified css that set a color to a element identified by "navbar" (note the suffix "_vX")
 
-@Genetify 
----------
+@Genetify annotation
+--------------------
 
     package com.example.testapp.pages;
     ...
@@ -46,8 +46,8 @@ Includes the genetify stack (js and css) and evolves the webpage design for all 
 
 This includes the genetify stack and evolves a specified resource type (css, js or markup) during the specified render phase.
 
-@Goal
------
+@Goal annotation
+----------------
 
     package com.example.testapp.pages;
     ...

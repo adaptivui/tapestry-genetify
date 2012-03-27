@@ -22,7 +22,7 @@ and/or a simple genetified markup (note the _class_ attribute's value with the '
     <div class="sentence">One way of saying something</div>           
     <div class="sentence v anotherway">Another way of saying something</div>
 
-#### Genetify ####
+#### How to genetify ####
 
 The module provides a way to add the genetify stack (js and css) and to evolve the webpage design.
 
@@ -57,7 +57,7 @@ The _@Genetify_ annotation includes the genetify stack and evolves the webpage d
 
 The _vary_ attribute evolves a given resource type (css, js or markup) during a given render phase.
 
-#### Goal record ####
+#### How to record a Goal ####
 
 The module provides also a way to record a goal on a page view or on an event 
 

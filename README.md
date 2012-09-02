@@ -59,7 +59,7 @@ The _vary_ attribute evolves a given resource type (css, js or markup) during a 
 
 #### How to record a Goal ####
 
-The module provides also a way to record a goal on a page view or on an event 
+The module provides also a way to record a goal on a page view or on an event (used to make the pages evolve toward an optimum)
 
 ###### Goal annotation  ######
 

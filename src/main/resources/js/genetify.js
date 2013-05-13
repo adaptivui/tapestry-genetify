@@ -1,3 +1,4 @@
+//copy from https://github.com/gregdingle/genetify/blob/master/genetify/genetify.js
 var genetifyTime = {
     'begin': {},
     'end': {},

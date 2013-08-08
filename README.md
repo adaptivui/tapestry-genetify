@@ -96,3 +96,8 @@ Licence
 =======
 
 This project is distributed under Apache 2 License. See LICENSE.txt for more information.
+
+Demo
+====
+
+See [tapestry-genetify-demo](https://github.com/adaptivui/tapestry-genetify-demo/blob/master/README.md) project

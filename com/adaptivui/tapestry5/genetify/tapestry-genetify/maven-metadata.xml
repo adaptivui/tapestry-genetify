@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.adaptivui.tapestry5.genetify</groupId>
+  <artifactId>tapestry-genetify</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20130817223208</lastUpdated>
+  </versioning>
+</metadata>

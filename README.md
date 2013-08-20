@@ -92,6 +92,28 @@ in SomePage.tml
 
 Here, the "addedToBasket" goal will be recorded with a score of 3 on the click event.
 
+Installation
+============
+
+Add the following maven repository into your webapp's pom.xml
+
+    <repository>
+       <id>tapestry-genetify-mvn-repo</id>
+       <url>https://github.com/adaptivui/tapestry-genetify/tree/mvn-repo</url>
+       <snapshots>
+          <enabled>true</enabled>
+          <updatePolicy>always</updatePolicy>
+       </snapshots>
+    </repository>
+	
+and the following maven dependency
+
+    <dependency>
+       <groupId>com.adaptivui.tapestry5.genetify</groupId>
+       <artifactId>tapestry-genetify</artifactId>
+       <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+
 Licence
 =======
 
@@ -100,4 +122,4 @@ This project is distributed under Apache 2 License. See LICENSE.txt for more inf
 Demo
 ====
 
-See [tapestry-genetify-demo](https://github.com/adaptivui/tapestry-genetify-demo/blob/master/README.md) project
+See the [tapestry-genetify-demo](https://github.com/adaptivui/tapestry-genetify-demo/blob/master/README.md) project and its live [demo](http://www.adaptivui.com/tapestry-genetify-demo)

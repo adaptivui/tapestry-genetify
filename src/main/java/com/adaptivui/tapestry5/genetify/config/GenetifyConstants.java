@@ -25,6 +25,9 @@ public class GenetifyConstants {
 	 * Genetify stack resources name
 	 */
 	public static final String GENETIFY_STACK = "GenetifyStack";
-
 	
+	/**
+	 * Genetify test mode (disable cookie, load controls)
+	 */
+	public static final String GENETIFY_TEST_MODE = "genetify-test-mode";	
 }

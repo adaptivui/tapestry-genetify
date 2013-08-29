@@ -1,46 +1,33 @@
-/**
- * call the genetify's record function on a click event
- **/
-RecordGoal = Class.create({
-		
-      initialize: function(spec) {
-			/*
-			 * The clicked object id  
-			 */
-			this.elementId = spec.elementId;
-			/*
-			 * The goal's id
-			 * */
-	   		this.label = spec.label;
-	   		/*
-	   		 * The goal's score
-	   		 */
-	   		this.score = spec.score;
-	   		
-	   		/*
-	   		 * Observe click event to store the goal
-	   		 */
-	   		this.boundRecordGoal = this.doRecordGoal.bindAsEventListener(this);
-	   		/**
-	   		 * Check if it is a pagewiew goal or an link goal
-	   		 * */
-	   		if(spec.elementId != null && spec.elementId != undefined){
-	   			Event.observe($(this.elementId), 'mousedown', this.boundRecordGoal);
-	   		}else{
-	   			Event.observe(window, 'load', this.boundRecordGoal);
+(function($){
+	
+	$.extend(Tapestry.Initializer, {
+		recordGoal: function(spec) {
+			var elementId = spec.elementId;
+			if(elementId != null && elementId != undefined){
+				$("#"+elementId).bind('click', function(){
+					genetify.record.goal(spec.label, spec.score);
+				});
+			}else{
+	   			$(window).bind('load', function(){
+					genetify.record.goal(spec.label, spec.score);
+				});
 	   		}
-       },
-       
-        /*
-        * Record the goal by calling a genetify.js function
-        */ 
-       doRecordGoal: function(event) {
-    	   
-    	   genetify.record.goal(this.label, this.score);
-    	   
-       }
-});
+        },
+        
+        showStats: function (spec){
+			$("#"+spec.elementId).bind('click', function(){
+				genetify.controls.showResults();
+			});
+		},
+		
+		showControl: function (spec){
+			$("#"+spec.elementId).bind('click', function(){
+				genetify.controls._insertHTML('genetify_controls', genetify_controls_HTML);
+				genetify.controls.showResults();
+			});
+		}
+	});
+})(jQuery);
 
-Tapestry.Initializer.recordGoal = function(spec){
-	new RecordGoal(spec);
-};
+
+

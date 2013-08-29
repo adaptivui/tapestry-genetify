@@ -30,6 +30,7 @@ var genetify = {
         USE_COOKIE: true,
         NO_VARYING: false,
         LOAD_CONTROLS: false,
+        SHOW_CONTROLS: false,
         SHOW_RESULTS: false,
         NAMESPACE: window.location.pathname
         //TODO: NO_SCANNING
@@ -110,7 +111,7 @@ var genetify = {
         if (genetify.config.LOAD_CONTROLS || genetify.config.SHOW_RESULTS){
             filesLoad();
             genetify._addListener(window, 'onload', function(){
-                if (genetify.config.LOAD_CONTROLS){
+                if (genetify.config.SHOW_CONTROLS){
                     genetify.controls._insertHTML('genetify_controls', genetify_controls_HTML);
                 }
                 if (genetify.config.SHOW_RESULTS){

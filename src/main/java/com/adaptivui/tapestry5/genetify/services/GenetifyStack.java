@@ -17,6 +17,7 @@
 package com.adaptivui.tapestry5.genetify.services;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -30,6 +31,8 @@ import org.apache.tapestry5.services.AssetSource;
 import org.apache.tapestry5.services.javascript.JavaScriptStack;
 import org.apache.tapestry5.services.javascript.StylesheetLink;
 
+import com.adaptivui.tapestry5.genetify.config.GenetifyConstants;
+
 /**
  * Add JS and CSS Genetify resources to Tapestry5 defaults.
  * 
@@ -42,10 +45,7 @@ public class GenetifyStack implements JavaScriptStack {
 	
 	private final List<Asset> javascriptStack;
 	
-	private static final String[] CORE_JAVASCRIPT = new String[] {
-				"classpath:js/genetify.js",
-				"classpath:js/tapestry-genetify.js" 
-			};
+	private List<String> CORE_JAVASCRIPT = null;
 
 	private final List<StylesheetLink> cssStack;
 
@@ -56,14 +56,24 @@ public class GenetifyStack implements JavaScriptStack {
     
 	public GenetifyStack(SymbolSource symbolSource, 
 			AssetSource assetSource,
-			@Symbol(SymbolConstants.PRODUCTION_MODE)
-			boolean productionMode) {
+			final @Symbol(SymbolConstants.PRODUCTION_MODE)
+			boolean productionMode,
+			final @Symbol(GenetifyConstants.GENETIFY_TEST_MODE) 
+			Boolean genetifyTestMode) {
 		
 		this.symbolSource = symbolSource;
 		this.assetSource = assetSource;
 		this.productionMode = productionMode;
 		
-		this.javascriptStack = convertToAssets(CORE_JAVASCRIPT);
+		CORE_JAVASCRIPT = new ArrayList<String>(){
+			private static final long serialVersionUID = 1L;
+			{
+				if(genetifyTestMode) add("classpath:js/genetify-options.js");
+				add("classpath:js/genetify.js");
+				add("classpath:js/tapestry-genetify.js");
+			}
+		};
+		this.javascriptStack = convertToAssets(CORE_JAVASCRIPT.toArray(new String[CORE_JAVASCRIPT.size()]));
 		this.cssStack = new ArrayList<StylesheetLink>();
 		this.cssStack.add(new StylesheetLink(expand(CORE_CSS, null)));
 	}

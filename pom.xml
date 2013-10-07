@@ -1,12 +1,46 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
-    <modelVersion>4.0.0</modelVersion>
-	  <groupId>com.adaptivui.tapestry5.genetify</groupId>
+      <modelVersion>4.0.0</modelVersion>
+     
+      <parent>
+	    <groupId>org.sonatype.oss</groupId>
+	    <artifactId>oss-parent</artifactId>
+	    <version>7</version>
+	  </parent>
+  
+    
+	  <groupId>com.adaptivui</groupId>
 	  <artifactId>tapestry-genetify</artifactId>
 	  <version>1.0.0-SNAPSHOT</version>
-	  <name>tapestry-genetify</name>
+	  <name>Tapestry Genetify module</name>
+	  <packaging>jar</packaging>
 	  <description>A tapestry integration for Genetify (A/B testing and webpages optimization)</description>
-        <dependencies>
+      <url>https://github.com/adaptivui/tapestry-genetify</url>
+	   <licenses>
+	       <license>
+	           <name>The Apache Software License, Version 2.0</name>
+	           <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	           <distribution>repo</distribution>
+	       </license>
+	   </licenses>
+	   <scm>
+		   <connection>scm:git:git@github.com:adaptivui/tapestry-genetify.git</connection>
+		   <developerConnection>scm:git:git@github.com:adaptivui/tapestry-genetify.git</developerConnection>
+		   <url>git@github.com:adaptivui/tapestry-genetify.git</url>
+	   </scm>
+	   <developers>
+			<developer>
+			    <id>adaptivui</id>
+		       <name>Nourredine KHADRI</name>
+		       <email>nourredine.k@gmail.com</email>
+		       <roles>
+		       		<role>Developer</role>
+		       </roles>
+		       <timezone>+1</timezone>
+		   </developer>
+	  </developers>
+	     
+      <dependencies>
         <!-- Too set up an application with a database, change the artifactId below to
              tapestry-hibernate, and add a dependency on your JDBC driver. You'll also
              need to add Hibernate configuration files, such as hibernate.cfg.xml. -->
@@ -61,7 +95,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
     <build>
         <finalName>tapestry-genetify</finalName>
         <plugins>
-            <plugin>
+	        <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
@@ -73,6 +107,31 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             </plugin>
 
             <plugin>
+				  <groupId>org.apache.maven.plugins</groupId>
+				  <artifactId>maven-source-plugin</artifactId>
+				  <executions>
+				    <execution>
+				      <id>attach-sources</id>
+				      <goals>
+				        <goal>jar</goal>
+				      </goals>
+				    </execution>
+				  </executions>
+				</plugin>
+				<plugin>
+				  <groupId>org.apache.maven.plugins</groupId>
+				  <artifactId>maven-javadoc-plugin</artifactId>
+				  <executions>
+				    <execution>
+				      <id>attach-javadocs</id>
+				      <goals>
+				        <goal>jar</goal>
+				      </goals>
+				    </execution>
+				  </executions>
+				</plugin>
+				
+			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
@@ -107,9 +166,9 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
               <version>2.4.3</version>
               <configuration>
                 <includes>
-      						<include>**/*Test.java</include>
-      					</includes>
-      					<suiteXmlFiles>
+      				<include>**/*Test.java</include>
+      			</includes>
+      			<suiteXmlFiles>
                   <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                 </suiteXmlFiles>
                 <argLine>-Xmx500m</argLine>
@@ -153,36 +212,11 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
 
     <reporting/>
 
-    <repositories>
-
-        <!-- This repository is only needed when the Tapestry version is a preview release, rather
-             than a final release. -->
-        <repository>
-            <id>apache-staging</id>
-            <url>https://repository.apache.org/content/groups/staging/</url>
-        </repository>
-        
-        <repository>
-          <id>sps-apache</id>
-          <url>https://repository.apache.org/content/repositories/releases</url>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-        
-        <repository>
-          <id>sps-apache-snapshots</id>
-          <url>https://repository.apache.org/content/repositories/snapshots</url>
-          <releases>
-            <enabled>false</enabled>
-          </releases>
-        </repository>
-    </repositories>
-
     <properties>
-        <tapestry-release-version>5.3.2</tapestry-release-version>
+        <tapestry-release-version>5.3.7</tapestry-release-version>
         <servlet-api-release-version>2.5</servlet-api-release-version>
         <testng-release-version>5.14.9</testng-release-version>
         <easymock-release-version>3.0</easymock-release-version>
     </properties>
+    
 </project>

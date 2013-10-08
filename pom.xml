@@ -1,5 +1,4 @@
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
       <modelVersion>4.0.0</modelVersion>
      
       <parent>
@@ -11,7 +10,7 @@
     
 	  <groupId>com.adaptivui</groupId>
 	  <artifactId>tapestry-genetify</artifactId>
-	  <version>1.0.0-SNAPSHOT</version>
+	  <version>1.0.0</version>
 	  <name>Tapestry Genetify module</name>
 	  <packaging>jar</packaging>
 	  <description>A tapestry integration for Genetify (A/B testing and webpages optimization)</description>
@@ -210,7 +209,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         </plugins>
     </build>
 
-    <reporting/>
+    <reporting />
 
     <properties>
         <tapestry-release-version>5.3.7</tapestry-release-version>

@@ -10,7 +10,7 @@
     
 	  <groupId>com.adaptivui</groupId>
 	  <artifactId>tapestry-genetify</artifactId>
-	  <version>1.0.0</version>
+	  <version>1.0.1-SNAPSHOT</version>
 	  <name>Tapestry Genetify module</name>
 	  <packaging>jar</packaging>
 	  <description>A tapestry integration for Genetify (A/B testing and webpages optimization)</description>

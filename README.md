@@ -95,23 +95,12 @@ Here, the "addedToBasket" goal will be recorded with a score of 3 on the click e
 Installation
 ============
 
-Add the following maven repository into your webapp's pom.xml
-
-    <repository>
-       <id>tapestry-genetify-mvn-repo</id>
-       <url>https://github.com/adaptivui/tapestry-genetify/tree/mvn-repo</url>
-       <snapshots>
-          <enabled>true</enabled>
-          <updatePolicy>always</updatePolicy>
-       </snapshots>
-    </repository>
-	
-and the following maven dependency
+[Available](http://search.maven.org/#search|ga|1|tapestry-genetify) from the maven central repository. Just add the following dependency for Tapestry 5.3 :
 
     <dependency>
-       <groupId>com.adaptivui.tapestry5.genetify</groupId>
+       <groupId>com.adaptivui</groupId>
        <artifactId>tapestry-genetify</artifactId>
-       <version>1.0.0-SNAPSHOT</version>
+       <version>1.0.0</version>
     </dependency>
 
 Licence

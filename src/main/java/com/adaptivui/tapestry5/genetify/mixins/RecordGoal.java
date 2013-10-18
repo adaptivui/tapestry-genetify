@@ -16,13 +16,11 @@
 
 package com.adaptivui.tapestry5.genetify.mixins;
 
-import org.apache.tapestry5.Asset;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.ClientElement;
 import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.InjectContainer;
 import org.apache.tapestry5.annotations.Parameter;
-import org.apache.tapestry5.annotations.Path;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.json.JSONObject;
@@ -36,12 +34,7 @@ import com.adaptivui.tapestry5.genetify.data.GeneType;
  * 
  */
 public class RecordGoal {
-	/**
-	 * The tapestry-genetify js script to be loaded after the genetify.js
-	 * */
-	@Inject
-	@Path(value="classpath:js/tapestry-genetify.js")
-	private Asset script;
+	
 	/**
 	 * The goal's id
 	 * */
@@ -65,9 +58,7 @@ public class RecordGoal {
 	 * */
 	@Genetify(vary=GeneType.NONE)
 	@SetupRender
-	void addLibraries(){
-		javascriptSupport.importJavaScriptLibrary(script);
-	}
+	void setupGenetify(){}
 	
 	@AfterRender
 	void addScriptInitialization() {
@@ -75,7 +66,6 @@ public class RecordGoal {
 		spec.put("elementId", element.getClientId());
 		spec.put("label", label);
 		spec.put("score", score);
-		javascriptSupport.addInitializerCall("recordGoal", spec);
+		javascriptSupport.require("tapestry-genetify").invoke("recordGoal").with(spec);
 	}
-
 }

@@ -20,6 +20,7 @@ import org.apache.tapestry5.annotations.CleanupRender;
 import org.apache.tapestry5.func.F;
 import org.apache.tapestry5.func.Worker;
 import org.apache.tapestry5.ioc.Resource;
+import org.apache.tapestry5.json.JSONObject;
 import org.apache.tapestry5.model.MutableComponentModel;
 import org.apache.tapestry5.plastic.ComputedValue;
 import org.apache.tapestry5.plastic.FieldHandle;
@@ -30,7 +31,6 @@ import org.apache.tapestry5.plastic.PlasticClass;
 import org.apache.tapestry5.plastic.PlasticField;
 import org.apache.tapestry5.plastic.PlasticMethod;
 import org.apache.tapestry5.services.TransformConstants;
-import org.apache.tapestry5.services.javascript.InitializationPriority;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import org.apache.tapestry5.services.transform.ComponentClassTransformWorker2;
 import org.apache.tapestry5.services.transform.TransformationSupport;
@@ -56,10 +56,14 @@ public class GenetifyWorker implements ComponentClassTransformWorker2
 				 * Call the Genetify's "vary()" function very early
 				 * Not very elegant but fulfills Genetify's requirements and does the job
 				 **/
-				javascriptSupport.addScript(
+				/*javascriptSupport.addScript(
 						InitializationPriority.IMMEDIATE, 
 						String.format("genetify.vary('%s');", 
 						geneType.getLabel()));
+				*/
+				final JSONObject spec = new JSONObject();
+				spec.put("type", geneType.getLabel());
+				javascriptSupport.require("tapestry-genetify").invoke("vary").with(spec);
 			}
 		}
 	};

@@ -10,7 +10,7 @@
     
 	  <groupId>com.adaptivui</groupId>
 	  <artifactId>tapestry-genetify</artifactId>
-	  <version>1.0.1-SNAPSHOT</version>
+	  <version>1.1.0-SNAPSHOT</version>
 	  <name>Tapestry Genetify module</name>
 	  <packaging>jar</packaging>
 	  <description>A tapestry integration for Genetify (A/B testing and webpages optimization)</description>
@@ -38,7 +38,7 @@
 		       <timezone>+1</timezone>
 		   </developer>
 	  </developers>
-	     
+	    
       <dependencies>
         <!-- Too set up an application with a database, change the artifactId below to
              tapestry-hibernate, and add a dependency on your JDBC driver. You'll also
@@ -212,7 +212,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
     <reporting />
 
     <properties>
-        <tapestry-release-version>5.3.7</tapestry-release-version>
+        <tapestry-release-version>5.4-alpha-22</tapestry-release-version>
         <servlet-api-release-version>2.5</servlet-api-release-version>
         <testng-release-version>5.14.9</testng-release-version>
         <easymock-release-version>3.0</easymock-release-version>

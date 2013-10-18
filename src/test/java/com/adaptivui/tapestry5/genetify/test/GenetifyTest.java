@@ -22,6 +22,7 @@ import org.apache.tapestry5.test.PageTester;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
+import com.adaptivui.tapestry5.genetify.data.GeneType;
 import com.adaptivui.tapestry5.genetify.services.AppModule;
 
 /**
@@ -52,7 +53,7 @@ public class GenetifyTest {
 	public void checkGenetifyAnnotation() {
 		Document result = checkJsAndCssStack("Index");
 		String markup  = result.getRootElement().getChildMarkup();
-		checkVaryFunctionCall(markup, "all");
+		checkVaryFunctionCall(markup, GeneType.ALL.getLabel());
 		
 	}
 	
@@ -63,9 +64,9 @@ public class GenetifyTest {
 	public void checkVaryFunctionCall() {
 		Document result = tester.renderPage("GenetifyPage");
 		String markup  = result.getRootElement().getChildMarkup();
-		checkVaryFunctionCall(markup, "CSSRules");
-		checkVaryFunctionCall(markup, "javascript");
-		checkVaryFunctionCall(markup, "elements");
+		checkVaryFunctionCall(markup, GeneType.CSSRULES.getLabel());
+		checkVaryFunctionCall(markup, GeneType.JAVASCRIPT.getLabel());
+		checkVaryFunctionCall(markup, GeneType.ELEMENTS.getLabel());
 	}
 	
 	/**
@@ -98,36 +99,34 @@ public class GenetifyTest {
 	// Check that js and css stack is correctly imported
 	private Document checkJsAndCssStack(String pageName) {
 		Document result = tester.renderPage(pageName);
+		
 		assert result.getRootElement() != null : "The document is empty";
-		assert result.getRootElement().getChildMarkup().contains(
-				"/js/genetify.js") : "'genetify.js' missing";
-		assert result.getRootElement().getChildMarkup().contains(
-				"/js/tapestry-genetify.js") : "'tapestry-genetify.js' missing";
-		assert result.getRootElement().getChildMarkup().contains(
-				"/css/genetify.css") : "'genetify.css' missing";
+		String token = 	"    \"tapestry-genetify\" : [\n"+
+						"      \"jquery\",\n"+
+						"      \"genetify\"\n"+
+						"    ]";
+		assert result.getRootElement().getChildMarkup().contains(token) : "genetify script declaration is missing";
+		assert result.getRootElement().getChildMarkup().contains("/css/genetify.css") : "'genetify.css' missing";
 		return result;
 	}
 	
 	// Check that the genetify.vary() function is called with an expected parameter
 	private void checkVaryFunctionCall(String markup, String expectedType){
-		assert markup.contains(
-			"genetify.vary('"+expectedType+"')") : 
-				"'genetify.vary('"+expectedType+"')' function call is missing";
+		String token =	"    \"tapestry-genetify:vary\",\n"+
+						"    {\n"+
+						"      \"type\" : \""+expectedType+"\"\n"+
+						"    }\n";
+		assert markup.contains(token) : "The following script for vary function is missing : "+token;
 	}
 	
 	// Check that the recordGoal initialization function is called with some expected parameters
 	private void checkGoalFunctionCall(String markup, String elementId, String goal, String score){
-		String token = "  \"recordGoal\" : [\n"+
-						    "    {\n"+((elementId!=null)?
-						    "      \"elementId\" : \""+elementId+"\",\n":"")+
-						    "      \"score\" : "+score+",\n"+
-						    "      \"label\" : \""+goal+"\"\n"+
-						    "    }\n"+
-						  "  ]";
-		assert markup.contains(token): 
-					"recordGoal function initialization with parameters : " +
-						((elementId!=null)?"elementId ["+elementId+"], ":"")+
-							"goal ["+goal+"] and score ["+score+"] is missing";
+		String token =	"    \"tapestry-genetify:recordGoal\",\n"+
+						"    {\n"+
+						(elementId!=null ? "      \"elementId\" : \""+elementId+"\",\n":"")+
+						"      \"score\" : "+score+",\n"+
+						"      \"label\" : \""+goal+"\"\n"+
+						"    }\n"; 
+		assert markup.contains(token) : "The following script for recordGoal function is missing : "+token;
 	}
-	
 }

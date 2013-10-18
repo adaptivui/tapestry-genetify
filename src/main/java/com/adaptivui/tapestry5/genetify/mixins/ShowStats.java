@@ -53,14 +53,15 @@ public class ShowStats {
 	@Genetify(vary=GeneType.NONE)
 	@SetupRender
 	void addLibraries(){
-		javascriptSupport.importJavaScriptLibrary(script);
+		//javascriptSupport.importJavaScriptLibrary(script);
 	}
 	
 	@AfterRender
 	void addScriptInitialization() {
 		JSONObject spec = new JSONObject();
 		spec.put("elementId", element.getClientId());
-		javascriptSupport.addInitializerCall("showStats", spec);
+		//javascriptSupport.addInitializerCall("showStats", spec);
+		javascriptSupport.require("tapestry-genetify").invoke("showStats").with(spec);
 	}
 
 }

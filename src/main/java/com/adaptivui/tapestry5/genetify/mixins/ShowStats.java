@@ -16,11 +16,9 @@
 
 package com.adaptivui.tapestry5.genetify.mixins;
 
-import org.apache.tapestry5.Asset;
 import org.apache.tapestry5.ClientElement;
 import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.InjectContainer;
-import org.apache.tapestry5.annotations.Path;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.json.JSONObject;
@@ -34,13 +32,6 @@ import com.adaptivui.tapestry5.genetify.data.GeneType;
  * 
  */
 public class ShowStats {
-	/**
-	 * The tapestry-genetify js script to be loaded after the genetify.js
-	 * */
-	@Inject
-	@Path(value="classpath:js/tapestry-genetify.js")
-	private Asset script;
-	
 	@Inject
 	private JavaScriptSupport javascriptSupport;
 	
@@ -52,16 +43,13 @@ public class ShowStats {
 	 * */
 	@Genetify(vary=GeneType.NONE)
 	@SetupRender
-	void addLibraries(){
-		//javascriptSupport.importJavaScriptLibrary(script);
-	}
+	void setupGenetify(){}
 	
 	@AfterRender
 	void addScriptInitialization() {
 		JSONObject spec = new JSONObject();
 		spec.put("elementId", element.getClientId());
-		//javascriptSupport.addInitializerCall("showStats", spec);
-		javascriptSupport.require("tapestry-genetify").invoke("showStats").with(spec);
+		javascriptSupport.require("genetify/tapestry-genetify").invoke("showStats").with(spec);
 	}
 
 }

@@ -17,6 +17,7 @@
 package com.adaptivui.tapestry5.genetify.services;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -24,6 +25,7 @@ import java.util.Locale;
 import org.apache.tapestry5.Asset;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.annotations.Symbol;
+import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
 import org.apache.tapestry5.ioc.services.SymbolSource;
 import org.apache.tapestry5.services.AssetSource;
 import org.apache.tapestry5.services.javascript.JavaScriptStack;
@@ -41,6 +43,8 @@ public class GenetifyStack implements JavaScriptStack {
 
 	private final AssetSource assetSource;
 	
+	private final List<Asset> javascriptStack;
+    
 	private List<String> CORE_JAVASCRIPT = null;
 
 	private final List<StylesheetLink> cssStack;
@@ -64,15 +68,17 @@ public class GenetifyStack implements JavaScriptStack {
 		CORE_JAVASCRIPT = new ArrayList<String>(){
 			private static final long serialVersionUID = 8264935457409477130L;
 			{
-				add("tapestry-genetify");
+				 if(genetifyTestMode) add("classpath:META-INF/assets/genetify/js/genetify-options.js");
+                 add("classpath:META-INF/assets/genetify/js/genetify.js");
 			}
 		};
-		this.cssStack = new ArrayList<StylesheetLink>();
+		this.javascriptStack = convertToAssets(CORE_JAVASCRIPT.toArray(new String[CORE_JAVASCRIPT.size()]));
+        this.cssStack = new ArrayList<StylesheetLink>();
 		this.cssStack.add(new StylesheetLink(expand(CORE_CSS, null)));
 	}
 	
 	public List<Asset> getJavaScriptLibraries() {
-		return Collections.emptyList();
+		return this.javascriptStack;
 	}
 
 	public List<StylesheetLink> getStylesheets() {
@@ -87,6 +93,11 @@ public class GenetifyStack implements JavaScriptStack {
 		return Collections.emptyList();
 	}
 	
+	
+	public List<String> getModules() {
+		return Arrays.asList( new String[]{"genetify/tapestry-genetify"});
+	}
+	
 	private Asset expand(String path, Locale locale) {
 		String expanded = symbolSource.expandSymbols(path);
 		if (expanded != null && !"".equals(expanded)) {
@@ -96,7 +107,11 @@ public class GenetifyStack implements JavaScriptStack {
 		}
 	}
 
-	public List<String> getModules() {
-		return CORE_JAVASCRIPT;
+	private List<Asset> convertToAssets(String[] paths) {
+        List<Asset> assets = CollectionFactory.newList();
+        for (String path : paths) {
+                assets.add(expand(path, null));
+        }
+        return Collections.unmodifiableList(assets);
 	}
 }

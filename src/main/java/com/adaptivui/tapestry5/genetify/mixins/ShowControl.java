@@ -38,10 +38,6 @@ public class ShowControl {
 	 * The tapestry-genetify js script to be loaded after the genetify.js
 	 * */
 	@Inject
-	@Path(value="classpath:js/tapestry-genetify.js")
-	private Asset script;
-	
-	@Inject
 	private JavaScriptSupport javascriptSupport;
 	
 	@InjectContainer
@@ -52,16 +48,13 @@ public class ShowControl {
 	 * */
 	@Genetify(vary=GeneType.NONE)
 	@SetupRender
-	void addLibraries(){
-		//javascriptSupport.importJavaScriptLibrary(script);
-	}
+	void setupGenetify(){}
 	
 	@AfterRender
 	void addScriptInitialization() {
 		JSONObject spec = new JSONObject();
 		spec.put("elementId", element.getClientId());
-		//javascriptSupport.addInitializerCall("showControl", spec);
-		javascriptSupport.require("tapestry-genetify").invoke("showControl").with(spec);
+		javascriptSupport.require("genetify/tapestry-genetify").invoke("showControl").with(spec);
 	}
 
 }

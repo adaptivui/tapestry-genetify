@@ -66,6 +66,6 @@ public class RecordGoal {
 		spec.put("elementId", element.getClientId());
 		spec.put("label", label);
 		spec.put("score", score);
-		javascriptSupport.require("tapestry-genetify").invoke("recordGoal").with(spec);
+		javascriptSupport.require("genetify/tapestry-genetify").invoke("recordGoal").with(spec);
 	}
 }

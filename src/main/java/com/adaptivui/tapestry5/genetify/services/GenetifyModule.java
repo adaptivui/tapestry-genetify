@@ -75,31 +75,4 @@ public class GenetifyModule {
 	{
 		configuration.add(new LibraryMapping("genetify", "com.adaptivui.tapestry5.genetify"));
 	}
-
-	/**
-	 * Configure js modules and fix dependencies depending on test mode 
-	 * @param configuration
-	 * @param testMode
-	 * @param script
-	 * @param jsSupport
-	 */
-	@Contribute(ModuleManager.class)
-	public static void addJSModules(
-			MappedConfiguration<String, JavaScriptModuleConfiguration> configuration,
-			@Symbol(GenetifyConstants.GENETIFY_TEST_MODE)
-			boolean testMode,
-			@Path("classpath:/META-INF/assets/genetify/js/tapestry-genetify.js")
-			Resource script,
-			JavaScriptSupport jsSupport
-			)
-	{
-		JavaScriptModuleConfiguration conf = new JavaScriptModuleConfiguration(script);
-		conf.dependsOn("jquery", "genetify");
-		if(testMode){
-			conf.dependsOn("genetify-options");
-		}
-		configuration.add("tapestry-genetify", conf);
-	}
-
-
 }

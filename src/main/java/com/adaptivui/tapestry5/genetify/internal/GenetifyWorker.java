@@ -56,14 +56,9 @@ public class GenetifyWorker implements ComponentClassTransformWorker2
 				 * Call the Genetify's "vary()" function very early
 				 * Not very elegant but fulfills Genetify's requirements and does the job
 				 **/
-				/*javascriptSupport.addScript(
-						InitializationPriority.IMMEDIATE, 
-						String.format("genetify.vary('%s');", 
-						geneType.getLabel()));
-				*/
 				final JSONObject spec = new JSONObject();
 				spec.put("type", geneType.getLabel());
-				javascriptSupport.require("tapestry-genetify").invoke("vary").with(spec);
+				javascriptSupport.require("genetify/tapestry-genetify").invoke("vary").with(spec);
 			}
 		}
 	};

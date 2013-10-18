@@ -53,6 +53,7 @@ public class GenetifyTest {
 	public void checkGenetifyAnnotation() {
 		Document result = checkJsAndCssStack("Index");
 		String markup  = result.getRootElement().getChildMarkup();
+		System.out.println(markup);
 		checkVaryFunctionCall(markup, GeneType.ALL.getLabel());
 		
 	}
@@ -99,20 +100,15 @@ public class GenetifyTest {
 	// Check that js and css stack is correctly imported
 	private Document checkJsAndCssStack(String pageName) {
 		Document result = tester.renderPage(pageName);
-		
 		assert result.getRootElement() != null : "The document is empty";
-		String token = 	"    \"tapestry-genetify\" : [\n"+
-						"      \"jquery\",\n"+
-						"      \"genetify\"\n"+
-						"    ]";
-		assert result.getRootElement().getChildMarkup().contains(token) : "genetify script declaration is missing";
+		assert result.getRootElement().getChildMarkup().contains("/js/genetify.js") : "'genetify.js' missing";
 		assert result.getRootElement().getChildMarkup().contains("/css/genetify.css") : "'genetify.css' missing";
 		return result;
 	}
 	
 	// Check that the genetify.vary() function is called with an expected parameter
 	private void checkVaryFunctionCall(String markup, String expectedType){
-		String token =	"    \"tapestry-genetify:vary\",\n"+
+		String token =	"    \"genetify/tapestry-genetify:vary\",\n"+
 						"    {\n"+
 						"      \"type\" : \""+expectedType+"\"\n"+
 						"    }\n";
@@ -121,7 +117,7 @@ public class GenetifyTest {
 	
 	// Check that the recordGoal initialization function is called with some expected parameters
 	private void checkGoalFunctionCall(String markup, String elementId, String goal, String score){
-		String token =	"    \"tapestry-genetify:recordGoal\",\n"+
+		String token =	"    \"genetify/tapestry-genetify:recordGoal\",\n"+
 						"    {\n"+
 						(elementId!=null ? "      \"elementId\" : \""+elementId+"\",\n":"")+
 						"      \"score\" : "+score+",\n"+

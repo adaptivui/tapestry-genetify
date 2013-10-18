@@ -57,7 +57,7 @@ public class GoalWorker implements ComponentClassTransformWorker2
 				JSONObject spec = new JSONObject();
 				spec.put("label", goal.getLabel());
 				spec.put("score", goal.getScore());
-				javascriptSupport.require("tapestry-genetify").invoke("recordGoal").with(spec);
+				javascriptSupport.require("genetify/tapestry-genetify").invoke("recordGoal").with(spec);
 			}
 		}
 	};

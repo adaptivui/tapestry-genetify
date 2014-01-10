@@ -111,4 +111,4 @@ This project is distributed under Apache 2 License. See LICENSE.txt for more inf
 Demo
 ====
 
-See the [tapestry-genetify-demo](https://github.com/adaptivui/tapestry-genetify-demo/blob/master/README.md) project and its live [demo](http://www.adaptivui.com/tapestry-genetify-demo)
+See the [tapestry-genetify-demo](https://github.com/adaptivui/tapestry-genetify-demo) project and its live [demo](http://www.adaptivui.com/tapestry-genetify-demo)

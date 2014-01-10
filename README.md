@@ -4,7 +4,7 @@ Tapestry Genetify
 Tapestry-genetify is intented to be a tapestry integration for [Genetify](https://github.com/gregdingle/genetify/wiki/) (A/B testing and webpages optimization).
 
 [Genetify](https://github.com/gregdingle/genetify/wiki/) is a powerful opensource website testing and optimization tool created by [Greg Dingle](https://github.com/gregdingle).
-It makes your website adapt and evolve toward an optimum in an autonomous way using some kind of [multi-armed bandit algorithm](http://en.wikipedia.org/wiki/Multi-armed_bandit) and can be compared to [Google Website Optimizer](http://www.google.com/websiteoptimizer/).
+It makes your website adapt and evolve toward an optimum in an autonomous way using some kind of [multi-armed bandit algorithm](http://en.wikipedia.org/wiki/Multi-armed_bandit) and can be compared to [Google Analytics Content Experiments](https://support.google.com/analytics/answer/1745147?hl=en).
 
 Example
 =======

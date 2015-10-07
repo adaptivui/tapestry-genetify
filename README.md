@@ -103,7 +103,7 @@ Installation
        <version>1.0.0</version>
     </dependency>
 
-Licence
+License
 =======
 
 This project is distributed under Apache 2 License. See LICENSE.txt for more information.
